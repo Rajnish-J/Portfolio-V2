@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, Download } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Download, BarChart3 } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import heroImage from '@/assets/hero-tech.jpg';
 
 const Hero = () => {
@@ -28,18 +29,23 @@ const Hero = () => {
     };
   }, []);
 
+  const stats = [
+    { platform: "CodeChef", solved: "1050+", days: "250+", level: "3 Star" },
+    { platform: "LeetCode", solved: "150+", level: "Knight" },
+    { platform: "HackerRank", solved: "200+", level: "Gold Badge" },
+    { platform: "GeeksforGeeks", solved: "300+", level: "Expert" }
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/90" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-surface to-background">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-10 w-4 h-4 bg-primary rounded-full animate-float opacity-60" />
+        <div className="absolute top-1/3 right-20 w-6 h-6 border border-secondary rounded-full animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-accent rounded-full animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 right-1/3 w-2 h-2 bg-primary-glow rounded-full animate-pulse" />
+        <div className="absolute bottom-1/3 right-10 w-5 h-5 border border-accent rounded-full animate-float" style={{ animationDelay: '1.5s' }} />
       </div>
-      
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-10" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -83,6 +89,38 @@ const Hero = () => {
               <Mail size={18} className="mr-2" />
               Get In Touch
             </a>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="btn-outline-tech inline-flex items-center justify-center">
+                  <BarChart3 size={18} className="mr-2" />
+                  Coding Stats
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[500px] bg-surface border-card-border">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-tech-gradient">Coding Statistics</DialogTitle>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  {stats.map((stat, index) => (
+                    <div key={index} className="card-tech">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h3 className="font-semibold text-primary">{stat.platform}</h3>
+                          <p className="text-sm text-muted-foreground">Level: {stat.level}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-secondary">{stat.solved}</div>
+                          <div className="text-xs text-muted-foreground">Problems Solved</div>
+                          {stat.days && (
+                            <div className="text-xs text-accent">{stat.days} days active</div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>
             <a 
               href="/resume.pdf" 
               target="_blank"
@@ -123,11 +161,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
-      {/* Floating Elements */}
-      <div className="absolute top-1/4 left-10 w-4 h-4 bg-primary rounded-full animate-float opacity-60" />
-      <div className="absolute top-1/3 right-20 w-6 h-6 border border-secondary rounded-full animate-float" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-accent rounded-full animate-float" style={{ animationDelay: '2s' }} />
     </section>
   );
 };

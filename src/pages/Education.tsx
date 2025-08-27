@@ -1,47 +1,47 @@
 import React from 'react';
-import { GraduationCap, Award, Calendar, MapPin } from 'lucide-react';
+import { GraduationCap, Award, Calendar, MapPin, BookOpen, Trophy } from 'lucide-react';
 
 const Education = () => {
   const educationData = [
     {
-      degree: "B.E. in Electronics and Communication Engineering",
+      degree: "B.E. Electronics and Communication Engineering",
       institution: "Panimalar Engineering College",
-      location: "Chennai",
+      location: "Chennai, Tamil Nadu",
       duration: "2020 - 2024",
       grade: "CGPA: 8.78",
-      description: "Specialized in electronics, communication systems, and embedded programming. Gained strong foundation in mathematical concepts and problem-solving methodologies.",
+      status: "Graduated",
+      description: "Specialized in electronics, communication systems, and embedded programming with strong focus on problem-solving.",
       highlights: [
         "Dean's List for Academic Excellence",
-        "Active member of IETE student chapter",
-        "Department Head of Institution of Electronics and Telecommunication Engineers",
-        "Led symposium events and technical competitions"
+        "Department Head of IETE",
+        "Led technical symposiums"
       ],
       color: "primary"
     },
     {
-      degree: "Higher Secondary Certificate (HSC)",
+      degree: "Higher Secondary Certificate",
       institution: "P.A.K. Palanisamy Higher Secondary School",
-      location: "Chennai",
+      location: "Chennai, Tamil Nadu", 
       duration: "2020",
-      grade: "Percentage: 68.3%",
-      description: "Focused on Science stream with Mathematics, Physics, Chemistry, and Computer Science. Developed analytical thinking and scientific approach to problem-solving.",
+      grade: "68.3%",
+      status: "Completed",
+      description: "Science stream with focus on Mathematics, Physics, Chemistry, and Computer Science.",
       highlights: [
         "Science stream specialization",
-        "Computer Science elective",
-        "Mathematics Olympiad participant"
+        "Computer Science elective"
       ],
       color: "secondary"
     },
     {
-      degree: "Secondary School Leaving Certificate (SSLC)",
-      institution: "P.A.K. Palanisamy Higher Secondary School", 
-      location: "Chennai",
-      duration: "2018",
-      grade: "Percentage: 86.6%",
-      description: "Completed foundational education with strong performance across all subjects. Developed discipline and time management skills.",
+      degree: "Secondary School Leaving Certificate",
+      institution: "P.A.K. Palanisamy Higher Secondary School",
+      location: "Chennai, Tamil Nadu",
+      duration: "2018", 
+      grade: "86.6%",
+      status: "Completed",
+      description: "Strong foundation in core subjects with excellent academic performance.",
       highlights: [
-        "Excellent academic performance",
-        "Active in extracurricular activities",
+        "Outstanding academic performance",
         "Student council member"
       ],
       color: "accent"
@@ -53,26 +53,41 @@ const Education = () => {
       title: "Ullas Young Achiever",
       organization: "Polaris",
       period: "2016 - 2020",
-      description: "Recognized for outstanding potential and continuous excellence in academics and extracurricular activities."
+      icon: <Trophy className="w-6 h-6" />,
+      color: "primary"
     },
     {
-      title: "NMMS Examination",
+      title: "NMMS Scholarship",
       organization: "Government of India",
       period: "2016",
-      description: "Selected in National Means-cum-Merit Scholarship examination, demonstrating academic merit and potential."
+      icon: <Award className="w-6 h-6" />,
+      color: "secondary"
     }
   ];
 
   const getColorClasses = (color: string) => {
     switch (color) {
       case 'primary':
-        return 'border-primary text-primary';
+        return 'border-primary text-primary bg-primary/5';
       case 'secondary':
-        return 'border-secondary text-secondary';
+        return 'border-secondary text-secondary bg-secondary/5';
       case 'accent':
-        return 'border-accent text-accent';
+        return 'border-accent text-accent bg-accent/5';
       default:
-        return 'border-primary text-primary';
+        return 'border-primary text-primary bg-primary/5';
+    }
+  };
+
+  const getGradientClass = (color: string) => {
+    switch (color) {
+      case 'primary':
+        return 'from-primary/20 to-transparent';
+      case 'secondary':
+        return 'from-secondary/20 to-transparent';
+      case 'accent':
+        return 'from-accent/20 to-transparent';
+      default:
+        return 'from-primary/20 to-transparent';
     }
   };
 
@@ -82,107 +97,108 @@ const Education = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Educational <span className="text-tech-gradient">Journey</span>
+            Educational <span className="text-tech-gradient">Background</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            My academic foundation and the milestones that shaped my technical expertise
+            Academic journey that built my foundation in technology and problem-solving
           </p>
         </div>
 
-        {/* Education Timeline */}
-        <div className="relative max-w-4xl mx-auto mb-16">
-          {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent"></div>
-
+        {/* Education Cards */}
+        <div className="max-w-4xl mx-auto space-y-8 mb-16">
           {educationData.map((edu, index) => (
             <div 
               key={index}
-              className={`relative flex items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} animate-fade-in`}
+              className="card-tech card-glow group hover:scale-[1.02] transition-all duration-500 animate-scale-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              {/* Timeline Dot */}
-              <div className={`absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 rounded-full border-2 ${getColorClasses(edu.color)} bg-background z-10`}>
-                <div className={`w-2 h-2 rounded-full ${edu.color === 'primary' ? 'bg-primary' : edu.color === 'secondary' ? 'bg-secondary' : 'bg-accent'} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}></div>
-              </div>
+              <div className="grid md:grid-cols-4 gap-6 items-start">
+                {/* Icon and Status */}
+                <div className="md:col-span-1 flex flex-col items-center text-center">
+                  <div className={`p-4 rounded-full border-2 ${getColorClasses(edu.color)} mb-4`}>
+                    <GraduationCap className="w-8 h-8" />
+                  </div>
+                  <div className={`px-3 py-1 rounded-full border text-xs font-medium ${getColorClasses(edu.color)}`}>
+                    {edu.status}
+                  </div>
+                </div>
 
-              {/* Content Card */}
-              <div className={`ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'} md:w-1/2`}>
-                <div className="card-tech card-glow group hover:scale-105 transition-all duration-300">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-lg border ${getColorClasses(edu.color)} bg-surface-elevated`}>
-                      <GraduationCap className="w-6 h-6" />
-                    </div>
-                    <div className="text-right">
-                      <div className="flex items-center text-sm text-muted-foreground mb-1">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {edu.duration}
-                      </div>
-                      <div className="flex items-center text-sm text-muted-foreground">
+                {/* Content */}
+                <div className="md:col-span-3">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2 group-hover:text-glow transition-all duration-300">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-lg text-muted-foreground mb-1">{edu.institution}</p>
+                      <div className="flex items-center text-sm text-muted-foreground mb-2">
                         <MapPin className="w-4 h-4 mr-1" />
                         {edu.location}
                       </div>
                     </div>
+                    <div className="text-right">
+                      <div className="flex items-center text-sm text-muted-foreground mb-2">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {edu.duration}
+                      </div>
+                      <div className={`text-xl font-bold ${edu.color === 'primary' ? 'text-primary' : edu.color === 'secondary' ? 'text-secondary' : 'text-accent'}`}>
+                        {edu.grade}
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Degree Info */}
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-glow transition-all duration-300">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-lg text-muted-foreground mb-2">{edu.institution}</p>
-                  <div className={`text-lg font-semibold mb-4 ${getColorClasses(edu.color)}`}>
-                    {edu.grade}
-                  </div>
-
-                  {/* Description */}
                   <p className="text-muted-foreground mb-4 leading-relaxed">
                     {edu.description}
                   </p>
 
                   {/* Highlights */}
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-sm text-primary">Key Highlights:</h4>
-                    {edu.highlights.map((highlight, hIndex) => (
-                      <div key={hIndex} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                        {highlight}
-                      </div>
-                    ))}
+                  <div>
+                    <h4 className="font-semibold text-sm text-primary mb-3">Key Highlights:</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {edu.highlights.map((highlight, hIndex) => (
+                        <div key={hIndex} className="flex items-center text-sm text-muted-foreground">
+                          <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
+                          {highlight}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* Background Gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${getGradientClass(edu.color)} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl -z-10`}></div>
             </div>
           ))}
         </div>
 
         {/* Achievements Section */}
-        <div className="animate-fade-in">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Academic <span className="text-tech-gradient">Achievements</span>
+        <div className="max-w-2xl mx-auto animate-fade-in">
+          <h2 className="text-3xl font-bold text-center mb-8">
+            <span className="text-tech-gradient">Awards & Recognition</span>
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid gap-6">
             {achievements.map((achievement, index) => (
               <div 
                 key={index}
-                className="card-tech card-glow group hover:scale-105 transition-all duration-300"
+                className="card-tech card-glow group hover:scale-[1.02] transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-start mb-4">
-                  <div className="p-3 rounded-lg border border-accent text-accent bg-surface-elevated mr-4">
-                    <Award className="w-6 h-6" />
+                <div className="flex items-center">
+                  <div className={`p-3 rounded-lg border ${getColorClasses(achievement.color)} mr-4`}>
+                    {achievement.icon}
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold group-hover:text-glow transition-all duration-300">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold group-hover:text-glow transition-all duration-300">
                       {achievement.title}
                     </h3>
                     <p className="text-muted-foreground">{achievement.organization}</p>
-                    <p className="text-sm text-accent font-semibold">{achievement.period}</p>
+                    <p className={`text-sm font-semibold ${achievement.color === 'primary' ? 'text-primary' : 'text-secondary'}`}>
+                      {achievement.period}
+                    </p>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {achievement.description}
-                </p>
               </div>
             ))}
           </div>

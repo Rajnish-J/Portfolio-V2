@@ -1,264 +1,237 @@
 import React, { useState } from 'react';
-import { Play, Pause, RotateCcw, Baby, GraduationCap, Code, Award, Briefcase, Target } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Calendar, Trophy, Code, GraduationCap, Briefcase } from 'lucide-react';
 
 const Journey = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const journeySteps = [
     {
-      id: 0,
-      year: "Early Years",
-      title: "The Curious Child",
-      icon: <Baby className="w-8 h-8" />,
-      description: "Every great developer starts with curiosity. From dismantling toys to understand how they work to asking endless 'why' questions, the foundation of logical thinking was being built.",
-      character: "👶",
-      background: "A young mind discovering the world through exploration and wonder.",
-      milestone: "First glimpse of technology"
+      year: "2002",
+      title: "The Beginning",
+      icon: <MapPin className="w-8 h-8" />,
+      description: "Born in Chennai, Tamil Nadu. The journey of curiosity and learning begins.",
+      image: "🌟",
+      color: "primary",
+      position: "left"
     },
     {
-      id: 1,
-      year: "2016-2018",
-      title: "Academic Foundation",
+      year: "2018",
+      title: "Foundation Years",
       icon: <GraduationCap className="w-8 h-8" />,
-      description: "Strong academic performance in SSLC (86.6%) laid the groundwork. Mathematics became a favorite subject, unknowingly preparing for the logical thinking required in programming.",
-      character: "🎓",
-      background: "Building analytical thinking and problem-solving skills through mathematics and science.",
-      milestone: "NMMS Scholarship Selection & Ullas Young Achiever Recognition"
+      description: "Completed SSLC with 86.6%. Strong academic foundation and developed interest in technology.",
+      image: "📚",
+      color: "secondary",
+      position: "right"
     },
     {
-      id: 2,
-      year: "2018-2020",
-      title: "Higher Secondary Exploration",
-      icon: <Award className="w-8 h-8" />,
-      description: "Choosing the science stream with computer science as an elective opened the first door to programming. Initial exposure to basic programming concepts sparked genuine interest.",
-      character: "💻",
-      background: "First encounter with programming logic and computer science fundamentals.",
-      milestone: "HSC Completion & Computer Science Discovery"
+      year: "2020",
+      title: "Higher Secondary",
+      icon: <GraduationCap className="w-8 h-8" />,
+      description: "Completed HSC with focus on Science stream. Computer Science sparked my passion for programming.",
+      image: "💻",
+      color: "accent",
+      position: "left"
     },
     {
-      id: 3,
-      year: "2020-2022",
-      title: "Engineering Beginnings",
+      year: "2020-2024",
+      title: "Engineering Journey",
       icon: <Code className="w-8 h-8" />,
-      description: "Starting B.E. in ECE at Panimalar Engineering College. The blend of electronics and programming created a unique perspective. Mathematics and logical thinking skills strengthened significantly.",
-      character: "⚡",
-      background: "Learning the fundamentals of electronics while discovering the power of programming.",
-      milestone: "M.A.I.D Robot Project - First major technical project"
+      description: "B.E. in ECE at Panimalar Engineering College. Discovered love for software development and problem-solving.",
+      image: "🎓",
+      color: "primary",
+      position: "right"
     },
     {
-      id: 4,
-      year: "2022-2023",
-      title: "The Programming Awakening",
+      year: "2022",
+      title: "First Innovation",
+      icon: <Trophy className="w-8 h-8" />,
+      description: "Created M.A.I.D cleaning robot using Arduino. First taste of bringing ideas to life through code.",
+      image: "🤖",
+      color: "secondary",
+      position: "left"
+    },
+    {
+      year: "2023",
+      title: "Skill Development",
       icon: <Code className="w-8 h-8" />,
-      description: "Discovered competitive programming on CodeChef. The addiction began! Solving problems became a daily ritual, building strong logical thinking and algorithmic skills.",
-      character: "🧩",
-      background: "250+ days of consistent practice, solving 1000+ problems, and falling in love with code.",
-      milestone: "Consistent coding practice begins"
+      description: "Mastered multiple programming languages and frameworks. Built various projects and gained expertise.",
+      image: "⚡",
+      color: "accent",
+      position: "right"
     },
     {
-      id: 5,
-      year: "2023-2024",
-      title: "Full Stack Evolution",
-      icon: <Briefcase className="w-8 h-8" />,
-      description: "Java Full Stack course at QSpiders transformed theoretical knowledge into practical skills. React.js, Spring Boot, and database management became second nature. Real projects started taking shape.",
-      character: "🚀",
-      background: "Building complete web applications and understanding the full development lifecycle.",
-      milestone: "Hospital Management System & Portfolio Development"
-    },
-    {
-      id: 6,
-      year: "2024-Present",
+      year: "2024",
       title: "Professional Ready",
-      icon: <Target className="w-8 h-8" />,
-      description: "CGPA of 8.78, multiple certifications, and a portfolio of projects. Leadership roles in college events. Ready to contribute to the tech industry and build innovative solutions.",
-      character: "👨‍💻",
-      background: "A well-rounded developer ready to make an impact in the professional world.",
-      milestone: "Graduation & Career Launch"
+      icon: <Briefcase className="w-8 h-8" />,
+      description: "Graduated with 8.78 CGPA. Ready to contribute to innovative software solutions in the industry.",
+      image: "🚀",
+      color: "primary",
+      position: "left"
+    },
+    {
+      year: "Future",
+      title: "The Road Ahead",
+      icon: <MapPin className="w-8 h-8" />,
+      description: "Continuing the journey of learning, building, and creating impactful technology solutions.",
+      image: "🌟",
+      color: "secondary",
+      position: "center"
     }
   ];
 
-  React.useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setCurrentStep(prev => 
-          prev < journeySteps.length - 1 ? prev + 1 : 0
-        );
-      }, 4000);
-    }
-    return () => clearInterval(interval);
-  }, [isPlaying, journeySteps.length]);
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
+  const nextStep = () => {
+    setCurrentStep((prev) => (prev + 1) % journeySteps.length);
   };
 
-  const handleReset = () => {
-    setCurrentStep(0);
-    setIsPlaying(false);
-  };
-
-  const handleStepClick = (stepIndex: number) => {
-    setCurrentStep(stepIndex);
-    setIsPlaying(false);
+  const prevStep = () => {
+    setCurrentStep((prev) => (prev - 1 + journeySteps.length) % journeySteps.length);
   };
 
   const currentJourney = journeySteps[currentStep];
 
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'primary':
+        return 'text-primary border-primary bg-primary/10';
+      case 'secondary':
+        return 'text-secondary border-secondary bg-secondary/10';
+      case 'accent':
+        return 'text-accent border-accent bg-accent/10';
+      default:
+        return 'text-primary border-primary bg-primary/10';
+    }
+  };
+
+  const getGlowClass = (color: string) => {
+    switch (color) {
+      case 'primary':
+        return 'shadow-[var(--glow-primary)]';
+      case 'secondary':
+        return 'shadow-[var(--glow-secondary)]';
+      case 'accent':
+        return 'shadow-[var(--glow-accent)]';
+      default:
+        return 'shadow-[var(--glow-primary)]';
+    }
+  };
+
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            My <span className="text-tech-gradient">Journey</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            The story of how a curious child evolved into a passionate developer
-          </p>
-        </div>
+    <div className="min-h-screen overflow-hidden relative bg-gradient-to-br from-background via-surface to-background">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Floating particles */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-float opacity-60" />
+        <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-secondary rounded-full animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-accent rounded-full animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-primary-glow rounded-full animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-3 h-3 border border-secondary rounded-full animate-float" style={{ animationDelay: '1.5s' }} />
+        
+        {/* Animated path */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" fill="none">
+          <path
+            d="M100 400 Q300 200 500 400 T900 400 Q1000 300 1100 400"
+            stroke="url(#pathGradient)"
+            strokeWidth="2"
+            fill="none"
+            strokeDasharray="5,5"
+            className="animate-pulse opacity-30"
+          />
+          <defs>
+            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" />
+              <stop offset="50%" stopColor="hsl(var(--secondary))" />
+              <stop offset="100%" stopColor="hsl(var(--accent))" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
 
-        {/* Story Controls */}
-        <div className="flex justify-center mb-12 space-x-4 animate-fade-in">
-          <button
-            onClick={handlePlayPause}
-            className="btn-tech flex items-center"
-          >
-            {isPlaying ? <Pause className="w-5 h-5 mr-2" /> : <Play className="w-5 h-5 mr-2" />}
-            {isPlaying ? 'Pause' : 'Play'} Story
-          </button>
-          <button
-            onClick={handleReset}
-            className="btn-outline-tech flex items-center"
-          >
-            <RotateCcw className="w-5 h-5 mr-2" />
-            Reset
-          </button>
-        </div>
-
-        {/* Main Story Display */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="card-tech card-glow p-8 text-center animate-scale-in">
-            {/* Character & Icon */}
-            <div className="flex items-center justify-center space-x-6 mb-6">
-              <div className="text-6xl animate-float">
-                {currentJourney.character}
-              </div>
-              <div className="p-4 rounded-full border border-primary text-primary bg-primary/10">
-                {currentJourney.icon}
-              </div>
-            </div>
-
-            {/* Year */}
-            <div className="text-sm font-mono text-secondary mb-2">
-              {currentJourney.year}
-            </div>
-
-            {/* Title */}
-            <h2 className="text-3xl font-bold mb-4 text-glow">
-              {currentJourney.title}
-            </h2>
-
-            {/* Description */}
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              {currentJourney.description}
-            </p>
-
-            {/* Background Context */}
-            <div className="bg-surface-elevated rounded-lg p-4 mb-4">
-              <p className="text-sm text-muted-foreground italic">
-                {currentJourney.background}
-              </p>
-            </div>
-
-            {/* Milestone */}
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 border border-primary text-primary rounded-full text-sm font-medium">
-              <Award className="w-4 h-4 mr-2" />
-              {currentJourney.milestone}
-            </div>
-          </div>
-        </div>
-
-        {/* Journey Timeline */}
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-center mb-8">Complete Journey Timeline</h3>
-          
-          {/* Timeline Navigation */}
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent transform -translate-y-1/2"></div>
-            
-            {/* Journey Steps */}
-            <div className="flex justify-between items-center relative">
-              {journeySteps.map((step, index) => (
-                <button
-                  key={step.id}
-                  onClick={() => handleStepClick(index)}
-                  className={`group flex flex-col items-center cursor-pointer transition-all duration-300 ${
-                    currentStep === index ? 'scale-110' : 'hover:scale-105'
+      {/* Main Content */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Progress Indicator */}
+          <div className="mb-8 flex justify-center">
+            <div className="flex items-center space-x-2">
+              {journeySteps.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-3 h-3 rounded-full border transition-all duration-300 ${
+                    index === currentStep
+                      ? `${getColorClasses(currentJourney.color)} scale-125`
+                      : 'border-muted bg-muted/20'
                   }`}
-                >
-                  {/* Step Circle */}
-                  <div className={`w-16 h-16 rounded-full border-2 flex items-center justify-center mb-3 transition-all duration-300 ${
-                    currentStep === index 
-                      ? 'border-primary bg-primary text-primary-foreground shadow-[var(--glow-primary)]' 
-                      : currentStep > index
-                      ? 'border-secondary bg-secondary text-secondary-foreground'
-                      : 'border-muted bg-background text-muted-foreground hover:border-primary'
-                  }`}>
-                    {React.cloneElement(step.icon, { className: 'w-6 h-6' })}
-                  </div>
-                  
-                  {/* Step Info */}
-                  <div className="text-center">
-                    <div className="text-xs font-mono text-muted-foreground mb-1">
-                      {step.year}
-                    </div>
-                    <div className={`text-sm font-medium transition-colors duration-300 ${
-                      currentStep === index ? 'text-primary' : 'text-muted-foreground group-hover:text-foreground'
-                    }`}>
-                      {step.title}
-                    </div>
-                  </div>
-                </button>
+                />
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Progress Indicator */}
-        <div className="mt-12 max-w-md mx-auto">
-          <div className="flex justify-between text-sm text-muted-foreground mb-2">
-            <span>Progress</span>
-            <span>{currentStep + 1} / {journeySteps.length}</span>
+          {/* Year Display */}
+          <div className="mb-6 animate-fade-in">
+            <div className={`inline-block px-6 py-2 rounded-full border-2 ${getColorClasses(currentJourney.color)} font-mono text-lg font-bold`}>
+              {currentJourney.year}
+            </div>
           </div>
-          <div className="w-full bg-muted rounded-full h-2">
-            <div 
-              className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500"
-              style={{ width: `${((currentStep + 1) / journeySteps.length) * 100}%` }}
-            />
-          </div>
-        </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16 animate-fade-in">
-          <div className="card-tech max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 text-tech-gradient">
-              Ready for the Next Chapter
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              This journey has prepared me for exciting challenges ahead. 
-              Let's build something amazing together and create the next chapter in this story!
+          {/* Main Content Card */}
+          <div className={`card-tech card-glow mx-auto max-w-2xl p-8 transition-all duration-500 animate-scale-in ${getGlowClass(currentJourney.color)}`}>
+            {/* Icon and Emoji */}
+            <div className="flex justify-center items-center mb-6">
+              <div className={`p-4 rounded-full border-2 ${getColorClasses(currentJourney.color)} mr-4`}>
+                {currentJourney.icon}
+              </div>
+              <div className="text-6xl animate-bounce">
+                {currentJourney.image}
+              </div>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-glow">
+              {currentJourney.title}
+            </h1>
+
+            {/* Description */}
+            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              {currentJourney.description}
             </p>
-            <a 
-              href="/contact" 
-              className="btn-tech inline-flex items-center"
-            >
-              Start Our Journey Together
-            </a>
+
+            {/* Step Counter */}
+            <div className="text-sm text-muted-foreground font-mono">
+              Step {currentStep + 1} of {journeySteps.length}
+            </div>
+          </div>
+
+          {/* Fun Elements */}
+          <div className="mt-8 flex justify-center space-x-8 text-4xl">
+            <div className="animate-float">🎯</div>
+            <div className="animate-float" style={{ animationDelay: '0.5s' }}>💡</div>
+            <div className="animate-float" style={{ animationDelay: '1s' }}>⚡</div>
           </div>
         </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      <button
+        onClick={prevStep}
+        className="fixed left-6 bottom-6 p-4 rounded-full bg-surface-elevated border border-card-border text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/5 transition-all duration-300 hover:scale-110 z-20"
+        aria-label="Previous step"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+
+      <button
+        onClick={nextStep}
+        className="fixed right-6 bottom-6 p-4 rounded-full bg-surface-elevated border border-card-border text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/5 transition-all duration-300 hover:scale-110 z-20"
+        aria-label="Next step"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Progress Bar */}
+      <div className="fixed bottom-0 left-0 right-0 h-1 bg-surface-elevated z-20">
+        <div 
+          className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-500"
+          style={{ width: `${((currentStep + 1) / journeySteps.length) * 100}%` }}
+        />
       </div>
     </div>
   );

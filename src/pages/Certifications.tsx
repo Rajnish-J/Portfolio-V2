@@ -1,88 +1,101 @@
 import React from 'react';
-import { Award, ExternalLink, Calendar, CheckCircle, Star } from 'lucide-react';
+import { Award, ExternalLink, Calendar, CheckCircle, Star, Code, Database, Globe } from 'lucide-react';
 
 const Certifications = () => {
   const certifications = [
     {
       title: "Java Full Stack Course",
-      organization: "QSpiders",
-      type: "Professional Course",
+      provider: "QSpiders",
+      category: "Full Stack Development",
+      date: "2024",
       status: "Completed",
-      description: "Comprehensive full-stack development course covering Java backend, frontend technologies, and database management.",
-      skills: ["Java", "Spring Boot", "HTML/CSS", "JavaScript", "MySQL"],
+      description: "Comprehensive course covering Java backend development, Spring Boot, and full-stack application development.",
+      skills: ["Java", "Spring Boot", "REST APIs", "Full Stack"],
+      icon: <Code className="w-6 h-6" />,
       color: "primary",
       featured: true
     },
     {
       title: "Joy Of Python",
-      organization: "NPTEL",
-      type: "Online Course",
+      provider: "NPTEL",
+      category: "Programming",
+      date: "2023",
       status: "Completed",
-      grade: "81%",
-      description: "Advanced Python programming course covering data structures, algorithms, and application development.",
-      skills: ["Python", "Data Structures", "Algorithms", "Programming Logic"],
-      color: "secondary",
-      featured: true
+      score: "81%",
+      description: "Advanced Python programming concepts, data structures, and algorithmic thinking.",
+      skills: ["Python", "Data Structures", "Algorithms"],
+      icon: <Code className="w-6 h-6" />,
+      color: "secondary"
     },
     {
       title: "Java: Understanding the Fundamentals",
-      organization: "Scaler",
-      type: "Online Course", 
-      status: "Completed",
-      description: "Deep dive into Java fundamentals, OOP concepts, and advanced programming techniques.",
-      skills: ["Java", "OOP", "Design Patterns", "Core Java"],
+      provider: "Scaler",
+      category: "Programming",
+      date: "2023",
+      status: "Completed", 
+      description: "Core Java concepts, OOP principles, and programming best practices.",
+      skills: ["Java", "OOP", "Programming"],
+      icon: <Code className="w-6 h-6" />,
       color: "accent"
     },
     {
-      title: "JavaScript Essentials",
-      organization: "Scaler",
-      type: "Online Course",
-      status: "Completed", 
-      description: "Modern JavaScript development including ES6+ features, async programming, and DOM manipulation.",
-      skills: ["JavaScript", "ES6+", "Async/Await", "DOM"],
+      title: "JavaScript",
+      provider: "Scaler",
+      category: "Frontend Development",
+      date: "2023",
+      status: "Completed",
+      description: "Modern JavaScript ES6+, DOM manipulation, and asynchronous programming.",
+      skills: ["JavaScript", "ES6+", "DOM"],
+      icon: <Globe className="w-6 h-6" />,
       color: "primary"
     },
     {
       title: "SQL using MySQL",
-      organization: "Scaler", 
-      type: "Online Course",
+      provider: "Scaler",
+      category: "Database",
+      date: "2023",
       status: "Completed",
-      description: "Database design, complex queries, optimization, and advanced MySQL concepts.",
-      skills: ["MySQL", "SQL Queries", "Database Design", "Optimization"],
+      description: "Database design, complex queries, and MySQL optimization techniques.",
+      skills: ["SQL", "MySQL", "Database Design"],
+      icon: <Database className="w-6 h-6" />,
       color: "secondary"
     },
     {
-      title: "Node.js Development",
-      organization: "Scaler",
-      type: "Online Course",
+      title: "Node.js",
+      provider: "Scaler",
+      category: "Backend Development",
+      date: "2023",
       status: "Completed",
-      description: "Server-side development with Node.js, Express framework, and API development.",
-      skills: ["Node.js", "Express", "REST APIs", "Server Development"],
+      description: "Server-side JavaScript, Express.js, and building scalable backend applications.",
+      skills: ["Node.js", "Express.js", "Backend"],
+      icon: <Code className="w-6 h-6" />,
       color: "accent"
     },
     {
-      title: "React.js Development",
-      organization: "Scaler",
-      type: "Online Course",
+      title: "React.js",
+      provider: "Scaler",
+      category: "Frontend Development",
+      date: "2023",
       status: "Completed",
-      description: "Modern React development including hooks, state management, and component architecture.",
-      skills: ["React.js", "Hooks", "State Management", "Component Design"],
+      description: "Component-based architecture, state management, and modern React patterns.",
+      skills: ["React.js", "Components", "State Management"],
+      icon: <Globe className="w-6 h-6" />,
       color: "primary"
     }
   ];
 
-  const achievements = [
+  const conferences = [
     {
       title: "Project Expo (M.A.I.D)",
       type: "Certificate of Appreciation",
-      description: "Recognition for innovative Arduino-based cleaning robot project showcasing embedded systems expertise.",
-      date: "2022"
+      date: "2022",
+      description: "Recognition for innovative Arduino-based cleaning robot project presentation."
     },
     {
       title: "International Conference on Intelligent Computing (IConIC)",
-      type: "Participation Certificate",
-      description: "PECTEAM 2K23 - Presented research and participated in technical discussions on intelligent computing.",
-      date: "2023"
+      type: "PECTEAM 2K23",
+      date: "2023",
+      description: "Participated in technical conference on emerging computing technologies."
     }
   ];
 
@@ -99,8 +112,21 @@ const Certifications = () => {
     }
   };
 
-  const getStatusColor = (status: string) => {
-    return status === 'Completed' ? 'text-success' : 'text-warning';
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'Full Stack Development':
+        return 'bg-primary/10 text-primary border-primary/20';
+      case 'Programming':
+        return 'bg-secondary/10 text-secondary border-secondary/20';
+      case 'Frontend Development':
+        return 'bg-accent/10 text-accent border-accent/20';
+      case 'Backend Development':
+        return 'bg-primary/10 text-primary border-primary/20';
+      case 'Database':
+        return 'bg-secondary/10 text-secondary border-secondary/20';
+      default:
+        return 'bg-muted/10 text-muted-foreground border-muted/20';
+    }
   };
 
   return (
@@ -109,164 +135,144 @@ const Certifications = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Certifications & <span className="text-tech-gradient">Achievements</span>
+            Certifications & <span className="text-tech-gradient">Learning</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Professional certifications and recognitions that validate my technical expertise
+            Continuous learning journey through professional courses and certifications
           </p>
         </div>
 
-        {/* Featured Certifications */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-8 flex items-center">
-            <Star className="w-6 h-6 text-accent mr-2" />
-            Featured Certifications
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {certifications.filter(cert => cert.featured).map((cert, index) => (
-              <div 
-                key={index}
-                className="card-tech card-glow group hover:scale-105 transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`p-3 rounded-lg border ${getColorClasses(cert.color)}`}>
-                    <Award className="w-6 h-6" />
-                  </div>
-                  <div className="text-right">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(cert.status)} bg-surface-elevated border border-card-border`}>
-                      {cert.status}
-                    </span>
-                    {cert.grade && (
-                      <div className="text-sm font-semibold text-primary mt-1">
-                        Grade: {cert.grade}
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-bold mb-2 group-hover:text-glow transition-all duration-300">
-                  {cert.title}
-                </h3>
-                <p className="text-muted-foreground mb-2">{cert.organization}</p>
-                <p className="text-sm text-accent mb-4">{cert.type}</p>
-                
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {cert.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {cert.skills.map((skill, skillIndex) => (
-                    <span 
-                      key={skillIndex}
-                      className="px-3 py-1 bg-surface-elevated border border-card-border rounded-full text-xs font-medium text-muted-foreground hover:text-primary hover:border-primary transition-all duration-300"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+        {/* Featured Certification */}
+        {certifications.filter(cert => cert.featured).map((cert, index) => (
+          <div key={index} className="max-w-4xl mx-auto mb-12 animate-fade-in">
+            <div className="card-tech card-glow p-8 group hover:scale-[1.02] transition-all duration-500 relative overflow-hidden">
+              <div className="absolute top-4 right-4">
+                <div className="flex items-center gap-2 px-3 py-1 bg-primary/20 text-primary text-xs font-medium rounded-full">
+                  <Star className="w-3 h-3" />
+                  Featured
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* All Certifications */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-8">All Certifications</h2>
-          <div className="grid lg:grid-cols-3 gap-6">
-            {certifications.map((cert, index) => (
-              <div 
-                key={index}
-                className="card-tech group hover:scale-105 transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <div className={`p-2 rounded-lg border ${getColorClasses(cert.color)}`}>
-                    <Award className="w-5 h-5" />
+              
+              <div className="grid md:grid-cols-4 gap-6 items-center">
+                <div className="md:col-span-1 text-center">
+                  <div className={`p-6 rounded-full border-2 ${getColorClasses(cert.color)} mx-auto mb-4 w-fit`}>
+                    {cert.icon}
                   </div>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(cert.status)} bg-surface-elevated border border-card-border`}>
+                  <div className={`px-3 py-1 rounded-full border text-xs font-medium ${getColorClasses(cert.color)}`}>
                     {cert.status}
-                  </span>
+                  </div>
                 </div>
                 
-                <h3 className="font-bold mb-1 group-hover:text-glow transition-all duration-300">
-                  {cert.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-2">{cert.organization}</p>
-                {cert.grade && (
-                  <p className="text-sm font-semibold text-primary mb-2">Grade: {cert.grade}</p>
-                )}
-                
-                <div className="flex flex-wrap gap-1 mt-3">
-                  {cert.skills.slice(0, 3).map((skill, skillIndex) => (
-                    <span 
-                      key={skillIndex}
-                      className="px-2 py-1 bg-surface-elevated rounded text-xs text-muted-foreground"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                  {cert.skills.length > 3 && (
-                    <span className="px-2 py-1 bg-surface-elevated rounded text-xs text-accent">
-                      +{cert.skills.length - 3} more
-                    </span>
-                  )}
+                <div className="md:col-span-3">
+                  <div className={`inline-block px-3 py-1 rounded-full border text-xs font-medium mb-3 ${getCategoryColor(cert.category)}`}>
+                    {cert.category}
+                  </div>
+                  <h3 className="text-3xl font-bold mb-2 group-hover:text-glow transition-all duration-300">
+                    {cert.title}
+                  </h3>
+                  <p className="text-xl text-muted-foreground mb-3">{cert.provider}</p>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                    {cert.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {cert.skills.map((skill, skillIndex) => (
+                      <span 
+                        key={skillIndex}
+                        className="px-2 py-1 bg-surface-elevated border border-card-border rounded text-xs font-medium text-muted-foreground"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
+        ))}
+
+        {/* Certifications Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {certifications.filter(cert => !cert.featured).map((cert, index) => (
+            <div 
+              key={index}
+              className="card-tech card-glow group hover:scale-[1.02] transition-all duration-300 animate-scale-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className={`p-3 rounded-lg border ${getColorClasses(cert.color)}`}>
+                  {cert.icon}
+                </div>
+                <div className={`px-2 py-1 rounded-full border text-xs font-medium ${getCategoryColor(cert.category)}`}>
+                  {cert.category}
+                </div>
+              </div>
+              
+              <h3 className="text-lg font-bold mb-2 group-hover:text-glow transition-all duration-300">
+                {cert.title}
+              </h3>
+              <p className="text-muted-foreground mb-1">{cert.provider}</p>
+              {cert.score && (
+                <p className="text-sm font-semibold text-secondary mb-3">Score: {cert.score}</p>
+              )}
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                {cert.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-1 mb-4">
+                {cert.skills.map((skill, skillIndex) => (
+                  <span 
+                    key={skillIndex}
+                    className="px-2 py-1 bg-surface-elevated border border-card-border rounded text-xs text-muted-foreground"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <div className="flex items-center">
+                  <Calendar className="w-3 h-3 mr-1" />
+                  {cert.date}
+                </div>
+                <div className="flex items-center text-secondary">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  {cert.status}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Achievements */}
-        <div className="animate-fade-in">
-          <h2 className="text-2xl font-bold mb-8">Recognition & Achievements</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {achievements.map((achievement, index) => (
+        {/* Conferences & Recognition */}
+        <div className="max-w-3xl mx-auto animate-fade-in">
+          <h2 className="text-3xl font-bold text-center mb-8">
+            Conferences & <span className="text-tech-gradient">Recognition</span>
+          </h2>
+          
+          <div className="space-y-4">
+            {conferences.map((conf, index) => (
               <div 
                 key={index}
-                className="card-tech card-glow group hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="card-tech card-glow group hover:scale-[1.01] transition-all duration-300"
               >
-                <div className="flex items-start mb-4">
+                <div className="flex items-start">
                   <div className="p-3 rounded-lg border border-accent text-accent bg-accent/5 mr-4">
-                    <CheckCircle className="w-6 h-6" />
+                    <Award className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold group-hover:text-glow transition-all duration-300">
-                      {achievement.title}
+                      {conf.title}
                     </h3>
-                    <p className="text-sm text-accent font-semibold">{achievement.type}</p>
-                    <div className="flex items-center text-sm text-muted-foreground mt-1">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {achievement.date}
-                    </div>
+                    <p className="text-accent font-medium">{conf.type}</p>
+                    <p className="text-sm text-muted-foreground mb-2">{conf.date}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {conf.description}
+                    </p>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {achievement.description}
-                </p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in">
-          <div className="card-tech text-center">
-            <div className="text-3xl font-bold text-primary mb-2">7+</div>
-            <div className="text-sm text-muted-foreground">Certifications</div>
-          </div>
-          <div className="card-tech text-center">
-            <div className="text-3xl font-bold text-secondary mb-2">2</div>
-            <div className="text-sm text-muted-foreground">Achievements</div>
-          </div>
-          <div className="card-tech text-center">
-            <div className="text-3xl font-bold text-accent mb-2">81%</div>
-            <div className="text-sm text-muted-foreground">Highest Grade</div>
-          </div>
-          <div className="card-tech text-center">
-            <div className="text-3xl font-bold text-primary mb-2">100%</div>
-            <div className="text-sm text-muted-foreground">Completion Rate</div>
           </div>
         </div>
       </div>

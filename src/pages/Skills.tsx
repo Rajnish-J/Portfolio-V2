@@ -1,5 +1,22 @@
 import React from 'react';
-import { Code, Database, Globe, Wrench, Brain, Users } from 'lucide-react';
+import { 
+  Code, 
+  Database, 
+  Globe, 
+  Wrench, 
+  Brain, 
+  Users,
+  Coffee,
+  Smartphone,
+  Server,
+  GitBranch,
+  Palette,
+  Zap,
+  Settings,
+  Lightbulb,
+  Target,
+  Clock
+} from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
@@ -8,11 +25,11 @@ const Skills = () => {
       title: "Programming Languages",
       color: "primary",
       skills: [
-        { name: "Java", level: 90 },
-        { name: "JavaScript (ES6+)", level: 85 },
-        { name: "TypeScript", level: 80 },
-        { name: "Python", level: 75 },
-        { name: "Go", level: 70 }
+        { name: "Java", icon: <Coffee className="w-5 h-5" /> },
+        { name: "JavaScript", icon: <Code className="w-5 h-5" /> },
+        { name: "TypeScript", icon: <Code className="w-5 h-5" /> },
+        { name: "Python", icon: <Code className="w-5 h-5" /> },
+        { name: "Go", icon: <Zap className="w-5 h-5" /> }
       ]
     },
     {
@@ -20,11 +37,11 @@ const Skills = () => {
       title: "Frontend Technologies",
       color: "secondary",
       skills: [
-        { name: "React.js", level: 85 },
-        { name: "HTML/CSS", level: 90 },
-        { name: "Tailwind CSS", level: 85 },
-        { name: "Material UI", level: 80 },
-        { name: "Bootstrap", level: 85 }
+        { name: "React.js", icon: <Smartphone className="w-5 h-5" /> },
+        { name: "HTML/CSS", icon: <Palette className="w-5 h-5" /> },
+        { name: "Tailwind CSS", icon: <Palette className="w-5 h-5" /> },
+        { name: "Material UI", icon: <Palette className="w-5 h-5" /> },
+        { name: "Bootstrap", icon: <Palette className="w-5 h-5" /> }
       ]
     },
     {
@@ -32,11 +49,11 @@ const Skills = () => {
       title: "Backend & Database",
       color: "accent",
       skills: [
-        { name: "Node.js", level: 80 },
-        { name: "Spring Boot", level: 85 },
-        { name: "REST APIs", level: 90 },
-        { name: "MySQL", level: 85 },
-        { name: "MongoDB", level: 75 }
+        { name: "Node.js", icon: <Server className="w-5 h-5" /> },
+        { name: "Spring Boot", icon: <Coffee className="w-5 h-5" /> },
+        { name: "REST APIs", icon: <Server className="w-5 h-5" /> },
+        { name: "MySQL", icon: <Database className="w-5 h-5" /> },
+        { name: "MongoDB", icon: <Database className="w-5 h-5" /> }
       ]
     },
     {
@@ -44,11 +61,11 @@ const Skills = () => {
       title: "Tools & Technologies",
       color: "primary",
       skills: [
-        { name: "Git", level: 85 },
-        { name: "VS Code", level: 90 },
-        { name: "Postman", level: 85 },
-        { name: "IntelliJ IDEA", level: 80 },
-        { name: "MySQL Workbench", level: 80 }
+        { name: "Git", icon: <GitBranch className="w-5 h-5" /> },
+        { name: "VS Code", icon: <Settings className="w-5 h-5" /> },
+        { name: "Postman", icon: <Settings className="w-5 h-5" /> },
+        { name: "IntelliJ IDEA", icon: <Settings className="w-5 h-5" /> },
+        { name: "MySQL Workbench", icon: <Settings className="w-5 h-5" /> }
       ]
     },
     {
@@ -56,11 +73,11 @@ const Skills = () => {
       title: "Core Concepts",
       color: "secondary",
       skills: [
-        { name: "Data Structures", level: 85 },
-        { name: "Algorithms", level: 80 },
-        { name: "OOP", level: 90 },
-        { name: "JDBC", level: 85 },
-        { name: "JPA", level: 80 }
+        { name: "Data Structures", icon: <Brain className="w-5 h-5" /> },
+        { name: "Algorithms", icon: <Brain className="w-5 h-5" /> },
+        { name: "OOP", icon: <Code className="w-5 h-5" /> },
+        { name: "JDBC", icon: <Database className="w-5 h-5" /> },
+        { name: "JPA", icon: <Database className="w-5 h-5" /> }
       ]
     },
     {
@@ -68,11 +85,11 @@ const Skills = () => {
       title: "Soft Skills",
       color: "accent",
       skills: [
-        { name: "Leadership", level: 85 },
-        { name: "Problem Solving", level: 90 },
-        { name: "Time Management", level: 85 },
-        { name: "Event Management", level: 80 },
-        { name: "Team Collaboration", level: 85 }
+        { name: "Leadership", icon: <Target className="w-5 h-5" /> },
+        { name: "Problem Solving", icon: <Lightbulb className="w-5 h-5" /> },
+        { name: "Time Management", icon: <Clock className="w-5 h-5" /> },
+        { name: "Event Management", icon: <Users className="w-5 h-5" /> },
+        { name: "Team Collaboration", icon: <Users className="w-5 h-5" /> }
       ]
     }
   ];
@@ -80,26 +97,26 @@ const Skills = () => {
   const getColorClasses = (color: string) => {
     switch (color) {
       case 'primary':
-        return 'text-primary border-primary';
+        return 'text-primary border-primary hover:bg-primary/10';
       case 'secondary':
-        return 'text-secondary border-secondary';
+        return 'text-secondary border-secondary hover:bg-secondary/10';
       case 'accent':
-        return 'text-accent border-accent';
+        return 'text-accent border-accent hover:bg-accent/10';
       default:
-        return 'text-primary border-primary';
+        return 'text-primary border-primary hover:bg-primary/10';
     }
   };
 
-  const getProgressColor = (color: string) => {
+  const getGlowClasses = (color: string) => {
     switch (color) {
       case 'primary':
-        return 'bg-primary';
+        return 'hover:shadow-[var(--glow-primary)]';
       case 'secondary':
-        return 'bg-secondary';
+        return 'hover:shadow-[var(--glow-secondary)]';
       case 'accent':
-        return 'bg-accent';
+        return 'hover:shadow-[var(--glow-accent)]';
       default:
-        return 'bg-primary';
+        return 'hover:shadow-[var(--glow-primary)]';
     }
   };
 
@@ -112,12 +129,12 @@ const Skills = () => {
             Technical <span className="text-tech-gradient">Skills</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive overview of my technical expertise and proficiency levels
+            My technology stack and expertise across different domains
           </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={categoryIndex}
@@ -132,25 +149,17 @@ const Skills = () => {
                 <h3 className="text-xl font-semibold">{category.title}</h3>
               </div>
 
-              {/* Skills List */}
-              <div className="space-y-4">
+              {/* Skills Grid */}
+              <div className="grid grid-cols-2 gap-3">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="group">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-medium text-sm">{skill.name}</span>
-                      <span className="text-xs text-muted-foreground font-mono">
-                        {skill.level}%
-                      </span>
+                  <div 
+                    key={skillIndex}
+                    className={`flex items-center gap-3 p-3 rounded-lg border transition-all duration-300 ${getColorClasses(category.color)} ${getGlowClasses(category.color)} group cursor-pointer`}
+                  >
+                    <div className="group-hover:scale-110 transition-transform duration-300">
+                      {skill.icon}
                     </div>
-                    <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
-                      <div 
-                        className={`h-full rounded-full transition-all duration-1000 ease-out ${getProgressColor(category.color)}`}
-                        style={{ 
-                          width: `${skill.level}%`,
-                          animationDelay: `${(categoryIndex * 0.1) + (skillIndex * 0.05)}s`
-                        }}
-                      />
-                    </div>
+                    <span className="font-medium text-sm truncate">{skill.name}</span>
                   </div>
                 ))}
               </div>
@@ -158,35 +167,24 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-16 grid md:grid-cols-2 gap-8">
-          <div className="card-tech animate-fade-in">
-            <h3 className="text-2xl font-bold mb-4 text-primary">Problem Solving</h3>
-            <p className="text-muted-foreground mb-4">
-              Completed <span className="text-primary font-semibold">1050+ problems</span> on CodeChef 
-              with <span className="text-secondary font-semibold">250+ days</span> of consistent practice.
-            </p>
-            <div className="font-mono text-sm text-accent">
-              rank: competitive_programmer++
-            </div>
+        {/* Stats Section */}
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="card-tech card-glow animate-fade-in text-center">
+            <div className="text-4xl font-bold text-primary mb-2">1050+</div>
+            <div className="text-muted-foreground mb-2">Problems Solved</div>
+            <div className="text-sm text-secondary">CodeChef Platform</div>
           </div>
 
-          <div className="card-tech animate-fade-in">
-            <h3 className="text-2xl font-bold mb-4 text-secondary">Currently Learning</h3>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-primary rounded-full mr-3 animate-pulse" />
-                <span className="text-muted-foreground">Advanced React Patterns</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-secondary rounded-full mr-3 animate-pulse" />
-                <span className="text-muted-foreground">Microservices Architecture</span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-accent rounded-full mr-3 animate-pulse" />
-                <span className="text-muted-foreground">Cloud Technologies (AWS)</span>
-              </div>
-            </div>
+          <div className="card-tech card-glow animate-fade-in text-center">
+            <div className="text-4xl font-bold text-secondary mb-2">250+</div>
+            <div className="text-muted-foreground mb-2">Days of Practice</div>
+            <div className="text-sm text-accent">Consistent Learning</div>
+          </div>
+
+          <div className="card-tech card-glow animate-fade-in text-center">
+            <div className="text-4xl font-bold text-accent mb-2">4+</div>
+            <div className="text-muted-foreground mb-2">Major Projects</div>
+            <div className="text-sm text-primary">Full Stack Development</div>
           </div>
         </div>
       </div>

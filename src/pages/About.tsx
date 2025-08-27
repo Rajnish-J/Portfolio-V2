@@ -38,39 +38,32 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Content */}
+        <div className="max-w-4xl mx-auto text-center mb-16">
           <div className="animate-fade-in">
-            <h2 className="text-3xl font-bold mb-6 text-glow">Career Objective</h2>
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p className="text-muted-foreground">
-                As a driven IT professional, I bring a unique combination of technical expertise 
-                and creative problem-solving to every project. My journey in software development 
-                has been fueled by an insatiable curiosity for emerging technologies and a 
-                commitment to continuous learning.
-              </p>
-              <p className="text-muted-foreground">
-                With a strong foundation in <span className="text-primary font-semibold">Java</span>, 
-                <span className="text-secondary font-semibold"> JavaScript</span>, and modern web frameworks, 
-                I specialize in creating full-stack applications that not only meet functional 
-                requirements but also deliver exceptional user experiences.
-              </p>
-              <p className="text-muted-foreground">
-                My goal is to work in a dynamic environment where I can contribute to impactful 
-                software solutions while learning from experienced professionals and growing 
-                both technically and personally.
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 mt-8">
+            <h2 className="text-3xl font-bold mb-6 text-glow">Who I Am</h2>
+            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              A passionate full-stack developer with expertise in <span className="text-primary font-semibold">Java</span> and 
+              <span className="text-secondary font-semibold"> JavaScript</span>. I love solving complex problems 
+              and building innovative digital solutions.
+            </p>
+            
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               <div className="card-tech text-center">
-                <div className="text-3xl font-bold text-primary mb-2">1050+</div>
-                <div className="text-sm text-muted-foreground">Problems Solved</div>
+                <div className="text-2xl font-bold text-primary mb-1">1050+</div>
+                <div className="text-xs text-muted-foreground">Problems Solved</div>
               </div>
               <div className="card-tech text-center">
-                <div className="text-3xl font-bold text-secondary mb-2">250+</div>
-                <div className="text-sm text-muted-foreground">Days of Practice</div>
+                <div className="text-2xl font-bold text-secondary mb-1">4+</div>
+                <div className="text-xs text-muted-foreground">Projects Built</div>
+              </div>
+              <div className="card-tech text-center">
+                <div className="text-2xl font-bold text-accent mb-1">8.78</div>
+                <div className="text-xs text-muted-foreground">CGPA</div>
+              </div>
+              <div className="card-tech text-center">
+                <div className="text-2xl font-bold text-primary-glow mb-1">250+</div>
+                <div className="text-xs text-muted-foreground">Days Coding</div>
               </div>
             </div>
           </div>
