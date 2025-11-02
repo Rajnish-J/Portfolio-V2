@@ -8,6 +8,7 @@ import Education from "./Education";
 import Certifications from "./Certifications";
 import Journey from "./Journey";
 import Contact from "./Contact";
+import Blob from "./Blog";
 
 const Index = () => {
   const location = useLocation();
@@ -55,6 +56,10 @@ const Index = () => {
 
       <section id="journey" className="snap-start">
         <Journey />
+      </section>
+
+      <section id="blob" className="snap-start">
+        <Blob />
       </section>
 
       <section id="contact" className="snap-start">

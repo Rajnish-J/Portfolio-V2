@@ -42,7 +42,7 @@ const About = () => {
           <div className="animate-fade-in">
             <h2 className="text-3xl font-bold mb-6 text-glow">Who I Am</h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              A passionate full-stack developer with expertise in <span className="text-primary font-semibold">Java</span> and 
+              A passionate full-stack developer with expertise in <span className="text-primary font-semibold">Python, Java</span> and 
               <span className="text-secondary font-semibold"> JavaScript</span>. I love solving complex problems 
               and building innovative digital solutions.
             </p>

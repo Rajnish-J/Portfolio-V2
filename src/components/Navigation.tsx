@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { name: "Education", id: "education", path: "/education" },
   { name: "Certifications", id: "certifications", path: "/certifications" },
   { name: "Journey", id: "journey", path: "/journey" },
+  { name: "Blob", id: "blob", path: "/blob" },
   { name: "Contact", id: "contact", path: "/contact" },
 ];
 
@@ -97,7 +98,7 @@ const Navigation = () => {
                   )
                     ? "bg-primary text-primary-foreground shadow-[var(--glow-primary)]"
                     : "text-muted-foreground hover:text-foreground hover:bg-surface-elevated"
-                }`}
+                  }`}
               >
                 {item.name}
               </a>
@@ -144,15 +145,14 @@ const Navigation = () => {
                     setIsOpen(false);
                     handleNavClick(e, item.id, item.path);
                   }}
-                  className={`px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
-                    (
+                  className={`px-4 py-3 rounded-lg font-medium transition-all duration-300 ${(
                       location.pathname === "/"
                         ? activeSection === item.id
                         : isRouteActive(item.path)
                     )
                       ? "bg-primary text-primary-foreground shadow-[var(--glow-primary)]"
                       : "text-muted-foreground hover:text-foreground hover:bg-surface-elevated"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </a>
