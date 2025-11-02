@@ -1,10 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* High-tech cyberpunk design system */
+
+@font-face {
+  font-family: Mont;
+  src: url("./assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+      format("truetype"),
+    url("./assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf")
+      format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
@@ -55,10 +66,27 @@
     --ring: 200 100% 60%;
 
     /* Tech gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 100% 70%));
-    --gradient-secondary: linear-gradient(135deg, hsl(140 100% 60%), hsl(200 100% 60%));
-    --gradient-surface: linear-gradient(135deg, hsl(220 15% 12%), hsl(220 15% 16%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%) 0%, hsl(200 30% 15%) 50%, hsl(220 15% 8%) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(200 100% 60%),
+      hsl(280 100% 70%)
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(140 100% 60%),
+      hsl(200 100% 60%)
+    );
+    --gradient-surface: linear-gradient(
+      135deg,
+      hsl(220 15% 12%),
+      hsl(220 15% 16%)
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(220 15% 8%) 0%,
+      hsl(200 30% 15%) 50%,
+      hsl(220 15% 8%) 100%
+    );
 
     /* Glows and shadows */
     --glow-primary: 0 0 30px hsl(200 100% 60% / 0.3);
@@ -124,10 +152,27 @@
     --ring: 200 100% 50%;
 
     /* Light mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(200 100% 50%), hsl(280 80% 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(140 80% 50%), hsl(200 100% 50%));
-    --gradient-surface: linear-gradient(135deg, hsl(200 50% 95%), hsl(200 50% 92%));
-    --gradient-hero: linear-gradient(135deg, hsl(200 100% 98%) 0%, hsl(200 50% 90%) 50%, hsl(200 100% 98%) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(200 100% 50%),
+      hsl(280 80% 60%)
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(140 80% 50%),
+      hsl(200 100% 50%)
+    );
+    --gradient-surface: linear-gradient(
+      135deg,
+      hsl(200 50% 95%),
+      hsl(200 50% 92%)
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(200 100% 98%) 0%,
+      hsl(200 50% 90%) 50%,
+      hsl(200 100% 98%) 100%
+    );
 
     /* Light mode glows */
     --glow-primary: 0 0 20px hsl(200 100% 50% / 0.2);
@@ -143,26 +188,29 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground;
+    font-family: Mont, system-ui, sans-serif;
     font-feature-settings: "cv11", "ss01";
     font-variant-ligatures: contextual;
     scroll-behavior: smooth;
+    /* Make the viewport the snapping container so full-page sections snap into view */
+    scroll-snap-type: y mandatory;
   }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: hsl(var(--surface));
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--primary));
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary-glow));
   }
@@ -175,7 +223,7 @@
   }
 
   .btn-tech::before {
-    content: '';
+    content: "";
     @apply absolute inset-0 bg-gradient-to-r from-primary-glow to-accent-glow opacity-0 transition-opacity duration-300;
   }
 
@@ -197,7 +245,7 @@
   }
 
   .card-glow::before {
-    content: '';
+    content: "";
     @apply absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-secondary rounded-xl opacity-0 transition-opacity duration-300 -z-10;
   }
 
@@ -219,16 +267,19 @@
 
   /* Grid animations */
   .grid-pattern {
-    background-image: 
-      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+    background-image: linear-gradient(hsl(var(--border)) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: grid-move 20s linear infinite;
   }
 
   @keyframes grid-move {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50px, 50px);
+    }
   }
 
   /* Pulse animations */
@@ -241,18 +292,19 @@
       box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
     }
     to {
-      box-shadow: 0 0 40px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.2);
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6),
+        0 0 60px hsl(var(--primary) / 0.2);
     }
   }
 
   /* Terminal effect */
   .terminal-text {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
     @apply text-secondary;
   }
 
   .typing::after {
-    content: '|';
+    content: "|";
     @apply text-primary animate-pulse;
   }
 }

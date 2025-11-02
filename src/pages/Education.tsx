@@ -16,34 +16,6 @@ const Education = () => {
         "Led technical symposiums"
       ],
       color: "primary"
-    },
-    {
-      degree: "Higher Secondary Certificate",
-      institution: "P.A.K. Palanisamy Higher Secondary School",
-      location: "Chennai, Tamil Nadu", 
-      duration: "2020",
-      grade: "68.3%",
-      status: "Completed",
-      description: "Science stream with focus on Mathematics, Physics, Chemistry, and Computer Science.",
-      highlights: [
-        "Science stream specialization",
-        "Computer Science elective"
-      ],
-      color: "secondary"
-    },
-    {
-      degree: "Secondary School Leaving Certificate",
-      institution: "P.A.K. Palanisamy Higher Secondary School",
-      location: "Chennai, Tamil Nadu",
-      duration: "2018", 
-      grade: "86.6%",
-      status: "Completed",
-      description: "Strong foundation in core subjects with excellent academic performance.",
-      highlights: [
-        "Outstanding academic performance",
-        "Student council member"
-      ],
-      color: "accent"
     }
   ];
 
