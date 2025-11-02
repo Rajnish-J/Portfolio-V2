@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, MapPin, Calendar, Trophy, Code, GraduationCap, Briefcase } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, CodeXml, Trophy, Code, GraduationCap, Briefcase } from 'lucide-react';
 
 const Journey = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -67,6 +67,15 @@ const Journey = () => {
       image: "🚀",
       color: "primary",
       position: "left"
+    },
+    {
+      year: "2024",
+      title: "Developer Journey",
+      icon: <CodeXml className="w-8 h-8" />,
+      description: "Joined Synergech Technologies as Software developer..",
+      image: "🧑‍💻",
+      color: "secondary",
+      position: "center"
     },
     {
       year: "Future",
@@ -173,7 +182,7 @@ const Journey = () => {
           </div>
 
           {/* Main Content Card */}
-          <div className={`card-tech card-glow mx-auto max-w-2xl p-8 transition-all duration-500 animate-scale-in ${getGlowClass(currentJourney.color)}`}>
+          <div className={`card-tech  mx-auto max-w-2xl p-8 transition-all duration-500 animate-scale-in ${getGlowClass(currentJourney.color)}`}>
             {/* Icon and Emoji */}
             <div className="flex justify-center items-center mb-6">
               <div className={`p-4 rounded-full border-2 ${getColorClasses(currentJourney.color)} mr-4`}>

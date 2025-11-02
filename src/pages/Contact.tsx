@@ -98,7 +98,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <div className="animate-fade-in">
-            <div className="card-tech card-glow">
+            <div className="card-tech ">
               <h2 className="text-2xl font-bold mb-6 text-glow">Send a Message</h2>
               
               {isSubmitted ? (
@@ -245,25 +245,6 @@ const Contact = () => {
                     </div>
                   </a>
                 ))}
-              </div>
-            </div>
-
-            {/* Availability */}
-            <div className="card-tech">
-              <h3 className="text-xl font-bold mb-4">Availability</h3>
-              <div className="space-y-3">
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-success rounded-full mr-3 animate-pulse"></div>
-                  <span className="text-muted-foreground">Open to new opportunities</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-primary rounded-full mr-3 animate-pulse"></div>
-                  <span className="text-muted-foreground">Available for freelance projects</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-secondary rounded-full mr-3 animate-pulse"></div>
-                  <span className="text-muted-foreground">Response time: Within 24 hours</span>
-                </div>
               </div>
             </div>
           </div>

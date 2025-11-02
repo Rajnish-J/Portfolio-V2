@@ -138,7 +138,7 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={categoryIndex}
-              className="card-tech card-glow animate-scale-in"
+              className="card-tech animate-scale-in"
               style={{ animationDelay: `${categoryIndex * 0.1}s` }}
             >
               {/* Category Header */}
@@ -169,19 +169,19 @@ const Skills = () => {
 
         {/* Stats Section */}
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="card-tech card-glow animate-fade-in text-center">
+          <div className="card-tech animate-fade-in text-center">
             <div className="text-4xl font-bold text-primary mb-2">1050+</div>
             <div className="text-muted-foreground mb-2">Problems Solved</div>
             <div className="text-sm text-secondary">CodeChef Platform</div>
           </div>
 
-          <div className="card-tech card-glow animate-fade-in text-center">
+          <div className="card-tech animate-fade-in text-center">
             <div className="text-4xl font-bold text-secondary mb-2">250+</div>
             <div className="text-muted-foreground mb-2">Days of Practice</div>
             <div className="text-sm text-accent">Consistent Learning</div>
           </div>
 
-          <div className="card-tech card-glow animate-fade-in text-center">
+          <div className="card-tech animate-fade-in text-center">
             <div className="text-4xl font-bold text-accent mb-2">4+</div>
             <div className="text-muted-foreground mb-2">Major Projects</div>
             <div className="text-sm text-primary">Full Stack Development</div>

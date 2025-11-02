@@ -73,7 +73,7 @@ const About = () => {
             {highlights.map((item, index) => (
               <div 
                 key={index}
-                className="card-tech card-glow group hover:scale-105 transition-all duration-300"
+                className="card-tech  group hover:scale-105 transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-primary mb-4 group-hover:text-primary-glow transition-colors duration-300">

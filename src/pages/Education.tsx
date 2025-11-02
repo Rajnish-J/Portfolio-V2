@@ -1,5 +1,4 @@
-import React from 'react';
-import { GraduationCap, Award, Calendar, MapPin, BookOpen, Trophy } from 'lucide-react';
+import { GraduationCap, Award, Calendar, MapPin, Trophy } from 'lucide-react';
 
 const Education = () => {
   const educationData = [
@@ -109,7 +108,7 @@ const Education = () => {
           {educationData.map((edu, index) => (
             <div 
               key={index}
-              className="card-tech card-glow group hover:scale-[1.02] transition-all duration-500 animate-scale-in"
+              className="card-tech group hover:scale-[1.02] transition-all duration-500 animate-scale-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="grid md:grid-cols-4 gap-6 items-start">
@@ -182,7 +181,7 @@ const Education = () => {
             {achievements.map((achievement, index) => (
               <div 
                 key={index}
-                className="card-tech card-glow group hover:scale-[1.02] transition-all duration-300"
+                className="card-tech group hover:scale-[1.02] transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center">
