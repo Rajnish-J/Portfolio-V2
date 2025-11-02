@@ -61,7 +61,7 @@
     --success: 140 100% 60%;
 
     /* Interactive elements */
-    --border: 200 30% 25%;
+    --border: 220 17.5% 27.5%; /* gray-700 */
     --input: 220 15% 16%;
     --ring: 200 100% 60%;
 
@@ -118,60 +118,60 @@
   }
 
   .light {
-    /* Light mode overrides */
-    --background: 200 100% 98%;
-    --foreground: 220 15% 15%;
-    --surface: 200 50% 95%;
-    --surface-elevated: 200 50% 92%;
+    /* Light mode overrides - Using Tailwind gray-300 palette with darker text */
+    --background: 220 17% 93%;
+    --foreground: 220 17% 12%; /* Darker text */
+    --surface: 220 17% 91%;
+    --surface-elevated: 220 17% 89%;
 
-    --card: 200 50% 95%;
-    --card-foreground: 220 15% 15%;
-    --card-border: 200 30% 80%;
+    --card: 220 17% 91%;
+    --card-foreground: 220 17% 12%; /* Darker text */
+    --card-border: 220 17% 75%; /* Darker border for better visibility */
 
-    --popover: 200 100% 98%;
-    --popover-foreground: 220 15% 15%;
+    --popover: 220 17% 93%;
+    --popover-foreground: 220 17% 12%; /* Darker text */
 
-    --primary: 200 100% 50%;
-    --primary-foreground: 200 100% 98%;
-    --primary-glow: 200 100% 60%;
-    --primary-dim: 200 80% 35%;
+    --primary: 220 17% 50%;
+    --primary-foreground: 220 17% 98%;
+    --primary-glow: 220 17% 60%;
+    --primary-dim: 220 17% 35%;
 
-    --secondary: 140 80% 50%;
-    --secondary-foreground: 200 100% 98%;
-    --secondary-glow: 140 80% 60%;
+    --secondary: 220 17% 45%;
+    --secondary-foreground: 220 17% 98%;
+    --secondary-glow: 220 17% 55%;
 
-    --accent: 280 80% 60%;
-    --accent-foreground: 200 100% 98%;
-    --accent-glow: 280 80% 70%;
+    --accent: 220 17% 40%;
+    --accent-foreground: 220 17% 98%;
+    --accent-glow: 220 17% 50%;
 
-    --muted: 200 30% 85%;
-    --muted-foreground: 220 15% 40%;
+    --muted: 220 17% 85%;
+    --muted-foreground: 220 17% 25%; /* Darker muted text */
 
-    --border: 200 30% 80%;
-    --input: 200 50% 92%;
-    --ring: 200 100% 50%;
+    --border: 220 17% 80%;
+    --input: 220 17% 92%;
+    --ring: 220 17% 40%;
 
-    /* Light mode gradients */
+    /* Light mode gradients - Tailwind gray-300 */
     --gradient-primary: linear-gradient(
       135deg,
-      hsl(200 100% 50%),
-      hsl(280 80% 60%)
+      hsl(220 17% 50%),
+      hsl(220 17% 40%)
     );
     --gradient-secondary: linear-gradient(
       135deg,
-      hsl(140 80% 50%),
-      hsl(200 100% 50%)
+      hsl(220 17% 45%),
+      hsl(220 17% 50%)
     );
     --gradient-surface: linear-gradient(
       135deg,
-      hsl(200 50% 95%),
-      hsl(200 50% 92%)
+      hsl(220 17% 91%),
+      hsl(220 17% 89%)
     );
     --gradient-hero: linear-gradient(
       135deg,
-      hsl(200 100% 98%) 0%,
-      hsl(200 50% 90%) 50%,
-      hsl(200 100% 98%) 100%
+      hsl(220 17% 93%) 0%,
+      hsl(220 17% 89%) 50%,
+      hsl(220 17% 93%) 100%
     );
 
     /* Light mode glows */
@@ -237,7 +237,7 @@
 
   /* Card variants */
   .card-tech {
-    @apply bg-gradient-to-br from-card to-surface-elevated border border-card-border rounded-xl p-6 transition-all duration-300 hover:border-primary hover:shadow-[var(--shadow-tech)] hover:-translate-y-1;
+    @apply bg-gradient-to-br from-card to-surface-elevated border-2 border-card-border rounded-xl p-6 transition-all duration-300 hover:border-primary hover:shadow-[var(--shadow-tech)] hover:-translate-y-1;
   }
 
   .card-glow {
