@@ -1,30 +1,6 @@
-import React from 'react';
-import { Target, Code, Lightbulb, Users } from 'lucide-react';
+import { highlights } from "@/Data/about.data";
 
 const About = () => {
-  const highlights = [
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: "Goal-Oriented",
-      description: "Focused on delivering high-quality solutions that meet client requirements and exceed expectations."
-    },
-    {
-      icon: <Code className="w-6 h-6" />,
-      title: "Technical Excellence",
-      description: "Committed to writing clean, maintainable code and staying updated with the latest technologies."
-    },
-    {
-      icon: <Lightbulb className="w-6 h-6" />,
-      title: "Problem Solver",
-      description: "Passionate about solving complex problems and finding innovative solutions to technical challenges."
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Team Player",
-      description: "Strong leadership and collaboration skills with experience in event management and team coordination."
-    }
-  ];
-
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-6">
@@ -42,11 +18,11 @@ const About = () => {
           <div className="animate-fade-in">
             <h2 className="text-3xl font-bold mb-6 text-glow">Who I Am</h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              A passionate full-stack developer with expertise in <span className="text-primary font-semibold">Python, Java</span> and 
-              <span className="text-secondary font-semibold"> JavaScript</span>. I love solving complex problems 
+              A passionate full-stack developer with expertise in <span className="text-primary font-semibold">Python, Java</span> and
+              <span className="text-secondary font-semibold"> JavaScript</span>. I love solving complex problems
               and building innovative digital solutions.
             </p>
-            
+
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               <div className="card-tech text-center">
@@ -71,7 +47,7 @@ const About = () => {
           {/* Highlights Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-scale-in">
             {highlights.map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="card-tech  group hover:scale-105 transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -90,8 +66,8 @@ const About = () => {
         <div className="card-tech max-w-4xl mx-auto text-center animate-fade-in">
           <h3 className="text-2xl font-bold mb-4 text-tech-gradient">Development Philosophy</h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            "Code is not just about solving problems—it's about crafting elegant solutions 
-            that stand the test of time. Every line of code should tell a story, and every 
+            "Code is not just about solving problems—it's about crafting elegant solutions
+            that stand the test of time. Every line of code should tell a story, and every
             application should make someone's life a little bit better."
           </p>
           <div className="mt-6 text-primary font-mono text-sm">
