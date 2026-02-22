@@ -1,92 +1,10 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, MapPin, CodeXml, Trophy, Code, GraduationCap, Briefcase } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { journeySteps } from '@/Data/journey.data';
+import { getColorClasses, getGlowClass } from '@/lib/utils/color.utils';
 
 const Journey = () => {
   const [currentStep, setCurrentStep] = useState(0);
-
-  const journeySteps = [
-    {
-      year: "2002",
-      title: "The Beginning",
-      icon: <MapPin className="w-8 h-8" />,
-      description: "Born in Chennai, Tamil Nadu. The journey of curiosity and learning begins.",
-      image: "🌟",
-      color: "primary",
-      position: "left"
-    },
-    {
-      year: "2018",
-      title: "Foundation Years",
-      icon: <GraduationCap className="w-8 h-8" />,
-      description: "Completed SSLC with 86.6%. Strong academic foundation and developed interest in technology.",
-      image: "📚",
-      color: "secondary",
-      position: "right"
-    },
-    {
-      year: "2020",
-      title: "Higher Secondary",
-      icon: <GraduationCap className="w-8 h-8" />,
-      description: "Completed HSC with focus on Science stream. Computer Science sparked my passion for programming.",
-      image: "💻",
-      color: "accent",
-      position: "left"
-    },
-    {
-      year: "2020-2024",
-      title: "Engineering Journey",
-      icon: <Code className="w-8 h-8" />,
-      description: "B.E. in ECE at Panimalar Engineering College. Discovered love for software development and problem-solving.",
-      image: "🎓",
-      color: "primary",
-      position: "right"
-    },
-    {
-      year: "2022",
-      title: "First Innovation",
-      icon: <Trophy className="w-8 h-8" />,
-      description: "Created M.A.I.D cleaning robot using Arduino. First taste of bringing ideas to life through code.",
-      image: "🤖",
-      color: "secondary",
-      position: "left"
-    },
-    {
-      year: "2023",
-      title: "Skill Development",
-      icon: <Code className="w-8 h-8" />,
-      description: "Mastered multiple programming languages and frameworks. Built various projects and gained expertise.",
-      image: "⚡",
-      color: "accent",
-      position: "right"
-    },
-    {
-      year: "2024",
-      title: "Professional Ready",
-      icon: <Briefcase className="w-8 h-8" />,
-      description: "Graduated with 8.78 CGPA. Ready to contribute to innovative software solutions in the industry.",
-      image: "🚀",
-      color: "primary",
-      position: "left"
-    },
-    {
-      year: "2024",
-      title: "Developer Journey",
-      icon: <CodeXml className="w-8 h-8" />,
-      description: "Joined Synergech Technologies as Software developer..",
-      image: "🧑‍💻",
-      color: "secondary",
-      position: "center"
-    },
-    {
-      year: "Future",
-      title: "The Road Ahead",
-      icon: <MapPin className="w-8 h-8" />,
-      description: "Continuing the journey of learning, building, and creating impactful technology solutions.",
-      image: "🌟",
-      color: "secondary",
-      position: "center"
-    }
-  ];
 
   const nextStep = () => {
     setCurrentStep((prev) => (prev + 1) % journeySteps.length);
@@ -98,32 +16,6 @@ const Journey = () => {
 
   const currentJourney = journeySteps[currentStep];
 
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case 'primary':
-        return 'text-primary border-primary bg-primary/10';
-      case 'secondary':
-        return 'text-secondary border-secondary bg-secondary/10';
-      case 'accent':
-        return 'text-accent border-accent bg-accent/10';
-      default:
-        return 'text-primary border-primary bg-primary/10';
-    }
-  };
-
-  const getGlowClass = (color: string) => {
-    switch (color) {
-      case 'primary':
-        return 'shadow-[var(--glow-primary)]';
-      case 'secondary':
-        return 'shadow-[var(--glow-secondary)]';
-      case 'accent':
-        return 'shadow-[var(--glow-accent)]';
-      default:
-        return 'shadow-[var(--glow-primary)]';
-    }
-  };
-
   return (
     <div className="min-h-screen overflow-hidden relative bg-gradient-to-br from-background via-surface to-background">
       {/* Animated Background */}
@@ -134,7 +26,7 @@ const Journey = () => {
         <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-accent rounded-full animate-float" style={{ animationDelay: '2s' }} />
         <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-primary-glow rounded-full animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-3 h-3 border border-secondary rounded-full animate-float" style={{ animationDelay: '1.5s' }} />
-        
+
         {/* Animated path */}
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" fill="none">
           <path
@@ -164,11 +56,10 @@ const Journey = () => {
               {journeySteps.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-3 h-3 rounded-full border transition-all duration-300 ${
-                    index === currentStep
+                  className={`w-3 h-3 rounded-full border transition-all duration-300 ${index === currentStep
                       ? `${getColorClasses(currentJourney.color)} scale-125`
                       : 'border-muted bg-muted/20'
-                  }`}
+                    }`}
                 />
               ))}
             </div>
@@ -237,7 +128,7 @@ const Journey = () => {
 
       {/* Progress Bar */}
       <div className="fixed bottom-0 left-0 right-0 h-1 bg-surface-elevated z-20">
-        <div 
+        <div
           className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-500"
           style={{ width: `${((currentStep + 1) / journeySteps.length) * 100}%` }}
         />

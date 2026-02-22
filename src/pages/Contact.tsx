@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle } from 'lucide-react';
+import { contactInfo, socialLinks } from '@/Data/contact.data';
+import { getColorClasses } from '@/lib/utils/color.utils';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,60 +30,6 @@ const Contact = () => {
     }, 3000);
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      value: "rajnishofficial02@gmail.com",
-      link: "mailto:rajnishofficial02@gmail.com",
-      color: "primary"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      value: "+91 91769 60600",
-      link: "tel:+919176960600",
-      color: "secondary"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      value: "Chennai, Tamil Nadu, India",
-      link: null,
-      color: "accent"
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github className="w-6 h-6" />,
-      title: "GitHub",
-      username: "Rajnish-J",
-      link: "https://github.com/Rajnish-J",
-      color: "primary"
-    },
-    {
-      icon: <Linkedin className="w-6 h-6" />,
-      title: "LinkedIn",
-      username: "Rajnish J",
-      link: "https://www.linkedin.com/in/rajnish-j-a749bb248",
-      color: "secondary"
-    }
-  ];
-
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case 'primary':
-        return 'border-primary text-primary hover:bg-primary/5';
-      case 'secondary':
-        return 'border-secondary text-secondary hover:bg-secondary/5';
-      case 'accent':
-        return 'border-accent text-accent hover:bg-accent/5';
-      default:
-        return 'border-primary text-primary hover:bg-primary/5';
-    }
-  };
-
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-6">
@@ -100,7 +48,7 @@ const Contact = () => {
           <div className="animate-fade-in">
             <div className="card-tech ">
               <h2 className="text-2xl font-bold mb-6 text-glow">Send a Message</h2>
-              
+
               {isSubmitted ? (
                 <div className="text-center py-12">
                   <div className="w-20 h-20 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -145,7 +93,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium mb-2">
                       Subject *
@@ -161,7 +109,7 @@ const Contact = () => {
                       placeholder="What's this about?"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-2">
                       Message *
@@ -177,7 +125,7 @@ const Contact = () => {
                       placeholder="Tell me about your project or what you'd like to discuss..."
                     />
                   </div>
-                  
+
                   <button
                     type="submit"
                     className="btn-tech w-full flex items-center justify-center"
@@ -199,7 +147,7 @@ const Contact = () => {
                 {contactInfo.map((info, index) => (
                   <div key={index} className="group">
                     {info.link ? (
-                      <a 
+                      <a
                         href={info.link}
                         className={`flex items-center p-4 rounded-lg border transition-all duration-300 ${getColorClasses(info.color)}`}
                       >
@@ -228,7 +176,7 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-6">Connect With Me</h3>
               <div className="space-y-4">
                 {socialLinks.map((social, index) => (
-                  <a 
+                  <a
                     key={index}
                     href={social.link}
                     target="_blank"
@@ -257,7 +205,7 @@ const Contact = () => {
               Let's Build Something Amazing Together
             </h3>
             <p className="text-muted-foreground mb-6">
-              Whether you have a project in mind, need technical consultation, or just want to connect, 
+              Whether you have a project in mind, need technical consultation, or just want to connect,
               I'm always excited to discuss new opportunities and collaborations.
             </p>
             <div className="font-mono text-primary text-sm">

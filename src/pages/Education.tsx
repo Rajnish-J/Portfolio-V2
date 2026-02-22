@@ -1,66 +1,8 @@
-import { GraduationCap, Award, Calendar, MapPin, Trophy } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { educationData, achievements } from '@/Data/education.data';
+import { getColorClasses, getGradientClass } from '@/lib/utils/color.utils';
 
 const Education = () => {
-  const educationData = [
-    {
-      degree: "B.E. Electronics and Communication Engineering",
-      institution: "Panimalar Engineering College",
-      location: "Chennai, Tamil Nadu",
-      duration: "2020 - 2024",
-      grade: "CGPA: 8.78",
-      status: "Graduated",
-      description: "Specialized in electronics, communication systems, and embedded programming with strong focus on problem-solving.",
-      highlights: [
-        "Dean's List for Academic Excellence",
-        "Department Head of IETE",
-        "Led technical symposiums"
-      ],
-      color: "primary"
-    }
-  ];
-
-  const achievements = [
-    {
-      title: "Ullas Young Achiever",
-      organization: "Polaris",
-      period: "2016 - 2020",
-      icon: <Trophy className="w-6 h-6" />,
-      color: "primary"
-    },
-    {
-      title: "NMMS Scholarship",
-      organization: "Government of India",
-      period: "2016",
-      icon: <Award className="w-6 h-6" />,
-      color: "secondary"
-    }
-  ];
-
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case 'primary':
-        return 'border-primary text-primary bg-primary/5';
-      case 'secondary':
-        return 'border-secondary text-secondary bg-secondary/5';
-      case 'accent':
-        return 'border-accent text-accent bg-accent/5';
-      default:
-        return 'border-primary text-primary bg-primary/5';
-    }
-  };
-
-  const getGradientClass = (color: string) => {
-    switch (color) {
-      case 'primary':
-        return 'from-primary/20 to-transparent';
-      case 'secondary':
-        return 'from-secondary/20 to-transparent';
-      case 'accent':
-        return 'from-accent/20 to-transparent';
-      default:
-        return 'from-primary/20 to-transparent';
-    }
-  };
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -78,7 +20,7 @@ const Education = () => {
         {/* Education Cards */}
         <div className="max-w-4xl mx-auto space-y-8 mb-16">
           {educationData.map((edu, index) => (
-            <div 
+            <div
               key={index}
               className="card-tech group hover:scale-[1.02] transition-all duration-500 animate-scale-in"
               style={{ animationDelay: `${index * 0.2}s` }}
@@ -148,10 +90,10 @@ const Education = () => {
           <h2 className="text-3xl font-bold text-center mb-8">
             <span className="text-tech-gradient">Awards & Recognition</span>
           </h2>
-          
+
           <div className="grid gap-6">
             {achievements.map((achievement, index) => (
-              <div 
+              <div
                 key={index}
                 className="card-tech group hover:scale-[1.02] transition-all duration-300"
                 style={{ animationDelay: `${index * 0.1}s` }}

@@ -3,10 +3,6 @@ import {
   ExternalLink,
   Github,
   Calendar,
-  Users,
-  Database,
-  Code2,
-  Zap,
 } from "lucide-react";
 import {
   Carousel,
@@ -15,71 +11,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { projects } from "@/Data/projects.data";
+import { getColorClasses } from "@/lib/utils/color.utils";
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "Personal Portfolio",
-      description:
-        "A modern, responsive portfolio built with React.js showcasing my skills, projects, and enabling collaboration. Features interactive UI/UX design and smooth animations.",
-      image: "/api/placeholder/400/250",
-      tags: ["React.js", "JavaScript", "CSS", "Responsive Design"],
-      github: "https://github.com/Rajnish-J/Portfolio.git",
-      live: "https://rajnish7102.netlify.app/",
-      date: "Dec 2024",
-      icon: <Code2 className="w-6 h-6" />,
-      color: "primary",
-    },
-    {
-      title: "Hospital Management System",
-      description:
-        "Comprehensive healthcare management solution for patient registration, appointment scheduling, and doctor availability tracking with full CRUD operations.",
-      image: "/api/placeholder/400/250",
-      tags: ["Spring Boot", "React.js", "MySQL", "REST API"],
-      github: "https://github.com/Rajnish-J/Hospify",
-      live: null,
-      date: "Dec 2024",
-      icon: <Users className="w-6 h-6" />,
-      color: "secondary",
-    },
-    {
-      title: "Agricultural Supply Chain System",
-      description:
-        "Integrated warehouse management system designed to optimize storage and tracking of agricultural materials with real-time inventory management.",
-      image: "/api/placeholder/400/250",
-      tags: ["JDBC", "Java", "Database Design", "Inventory Management"],
-      github: null,
-      live: null,
-      date: "Mar 2024",
-      icon: <Database className="w-6 h-6" />,
-      color: "accent",
-    },
-    {
-      title: "M.A.I.D - Cleaning Robot",
-      description:
-        "Intelligent home cleaning bot using Arduino microcontroller with automated material dispensing and efficient navigation systems.",
-      image: "/api/placeholder/400/250",
-      tags: ["Arduino", "C++", "Embedded Systems", "IoT"],
-      github: null,
-      live: null,
-      date: "Nov 2022",
-      icon: <Zap className="w-6 h-6" />,
-      color: "primary",
-    },
-  ];
-
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case "primary":
-        return "text-primary border-primary hover:shadow-[var(--glow-primary)]";
-      case "secondary":
-        return "text-secondary border-secondary hover:shadow-[var(--glow-secondary)]";
-      case "accent":
-        return "text-accent border-accent hover:shadow-[var(--glow-accent)]";
-      default:
-        return "text-primary border-primary hover:shadow-[var(--glow-primary)]";
-    }
-  };
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -112,13 +47,12 @@ const Projects = () => {
                 >
                   <SpotlightCard
                     className="card-tech group hover:scale-[0.97] transition-all duration-500 h-full"
-                    spotlightColor={`rgba(${
-                      project.color === "primary"
+                    spotlightColor={`rgba(${project.color === "primary"
                         ? "0, 229, 255"
                         : project.color === "secondary"
-                        ? "34, 197, 94"
-                        : "168, 85, 247"
-                    }, 0.2)`}
+                          ? "34, 197, 94"
+                          : "168, 85, 247"
+                      }, 0.2)`}
                   >
                     {/* Project Header */}
                     <div className="flex items-start justify-between mb-4">
